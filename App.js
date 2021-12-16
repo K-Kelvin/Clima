@@ -4,16 +4,20 @@ import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
 
 export default function App() {
   const [searchText, setSearchText] = useState('');
-  const [results, setResults] = useState([]);
+  const [result, setResult] = useState();
 
   const getResults = () => {
-    const url = ``
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${searchText}&APPID=435fff9d1d12fa8ca574767eaeee84da`;
     fetch(url)
       .then(response => response.json())
       .then(data => {
-        console.log(data);
-        setResults(data);
+        setResult(data);
       });
+  }
+
+  function convertKelvinToCelsius(temperature){
+    let temp = parseFloat(temperature);
+    return (temp - 273.15).toFixed(2);
   }
 
   return (
@@ -32,15 +36,15 @@ export default function App() {
         />
       </View>
       <View style={styles.results}>
-        {results.length > 0 ? (
-          <Text style={styles.resultsTitle}>Results</Text>
-        ) : null}
-        {results.map(result => (
+        <Text style={styles.resultsTitle}>Results</Text>
+        {result ? (
           <View style={styles.result}>
-            result
+            {convertKelvinToCelsius(result?.main?.temp)} degrees
           </View>
-        ))}
-      </View>
+        ) : (
+          <Text>No results</Text>
+        )}
+        </View>
 
       <StatusBar style="auto" />
     </View>
@@ -70,14 +74,15 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     borderColor: "black", 
     paddingVertical: 10,
-    paddingHorizontal: 16
+    paddingHorizontal: 16,
+    marginBottom: 8,
   },
   resultsTitle: {
     textAlign: "left",
     fontWeight: "bold"
   },
-  results: {
-  },
   result: {
+    border: 1,
+    borderColor: "black"
   },
 });
