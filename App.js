@@ -15,7 +15,7 @@ export default function App() {
       });
   }
 
-  function convertKelvinToCelsius(temperature){
+  function convertKelvinToCelsius(temperature) {
     let temp = parseFloat(temperature);
     return (temp - 273.15).toFixed(2);
   }
@@ -39,12 +39,12 @@ export default function App() {
         <Text style={styles.resultsTitle}>Results</Text>
         {result ? (
           <View style={styles.result}>
-            {convertKelvinToCelsius(result?.main?.temp)} degrees
+            <Text style={{ fontSize: 18, color: "green" }}>{convertKelvinToCelsius(result?.main?.temp)} °C</Text>
           </View>
         ) : (
           <Text>No results</Text>
         )}
-        </View>
+      </View>
 
       <StatusBar style="auto" />
     </View>
@@ -56,26 +56,26 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     paddingTop: 24,
-    paddingLeft: 20,
-    paddingRight: 20
+    paddingHorizontal: 20,
   },
   title: {
     fontWeight: "bold",
     textAlign: "center",
     fontSize: 36,
-    marginBottom: 24
+    marginBottom: 24,
+    marginTop: 48,
   },
   searchContainer: {
     display: "flex",
     marginBottom: 16,
   },
   searchInput: {
-    borderWidth: 1, 
+    borderWidth: 1,
     borderRadius: 8,
-    borderColor: "black", 
+    borderColor: "black",
     paddingVertical: 10,
     paddingHorizontal: 16,
-    marginBottom: 8,
+    marginBottom: 20,
   },
   resultsTitle: {
     textAlign: "left",
