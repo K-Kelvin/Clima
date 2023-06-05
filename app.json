@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "clima",
+    "name": "Clima",
     "slug": "clima",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -11,7 +11,8 @@
       "backgroundColor": "#ffffff"
     },
     "updates": {
-      "fallbackToCacheTimeout": 0
+      "fallbackToCacheTimeout": 0,
+      "url": "https://u.expo.dev/381ce15b-20af-4b65-832a-30237037927a"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -27,6 +28,14 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "381ce15b-20af-4b65-832a-30237037927a"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "sdkVersion"
     }
   }
 }
